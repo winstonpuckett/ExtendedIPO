@@ -1,5 +1,5 @@
 # Introduction
-"Extended IPO" is a way of structuring CRUD-style applications to align user flow. It promotes a shallow call stack and understandable scoping. It builds on common practices such as [CQRS](https://www.martinfowler.com/bliki/CQRS.html) and [MediatR](https://github.com/jbogard/MediatR), but identifies that there is an extra step between Query and Command. There are rigid definitions in Extended IPO so that we can avoid asking philosophical questions of our code and focus on concrete, easy-to-follow structures.
+"Extended IPO" is a way of structuring CRUD-style applications to align user flow. It promotes a shallow call stack and understandable scoping. It builds on common practices such as [CQRS](https://www.martinfowler.com/bliki/CQRS.html) and [MediatR](https://github.com/jbogard/MediatR), but identifies there is an extra step between Query and Command. There are rigid definitions in Extended IPO so that we can avoid asking philosophical questions of our code and focus on concrete, easy-to-follow structures.
 
 # Understanding the mental model
 ## Scoping
@@ -17,7 +17,7 @@ This includes information from databases, caches, etc.
 #### Process
 > "Any operation which must be completed inside the function before the outside world can be changed." 
 
-There are generally two types of processes in CRUD programs, validation and transformation. While not part of Extended IPO, it's recommended that you create one large Process() method for each type of work (validtion, transformation, etc) and then create private methods which the Process() calls for each business rule. Examples of this are covered in the tests.
+There are generally two types of processes in CRUD programs, validation and transformation. While not part of Extended IPO, it's recommended that you create one large Process() method for each type of work (validtion, transformation, etc) and then create private methods which the Process() calls for each business rule. Examples of this are covered in the tests section of the library.
 
 #### Output
 > "Any unit of work which is both expected to succeed and changes something in the outside universe."
@@ -36,7 +36,8 @@ Because of how IPO is defined, functions are placed in a specific order. An exam
 Now that we have an understanding in plain english, let's write it in sudo-C#.
 
 ```C#
-IActionResult PerformUserFlow(userInput) {
+IActionResult PerformUserFlow(userInput) 
+{
     var allData = Query(userInput);
     var errors = Validate(allData);
 
