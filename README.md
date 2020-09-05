@@ -27,11 +27,11 @@ There is no limit to what could be changed. Perhaps it's a record in a database 
 ### Rules gathered from these definitions
 Because of how IPO is defined, functions are placed in a specific order. An example of what this looks like in an API lies below.
 
-    1. User sends us data.
-    2. We go and get extra data from the database
-    3. We make sure that the user submitted data is valid and doesn't conflict with any business rules.
-    4. If there are no error messages, transform the data based on any transformational business rules we might have, and submit it to the database.
-    5. If there are error messages, return those to the user.
+1. User sends us data.
+1. We go and get extra data from the database
+1. We make sure that the user submitted data is valid and doesn't conflict with any business rules.
+1. If there are no error messages, transform the data based on any transformational business rules we might have, and submit it to the database.
+1. If there are error messages, return those to the user.
 
 Now that we have an understanding in plain english, let's write it in sudo-C#.
 
@@ -56,20 +56,20 @@ IActionResult PerformUserFlow(userInput)
 ### Types of functions
 Generalizing the code above, we end up with five different types of functions:
 1. Entry Points: Where the user flow begins (PerformUserFlow(userInput)).
-2. Queries: Where extra information is gathered from the universe (Query(userInput)).
-3. Validators: Where data validation is performed (Validate(allData)).
-4. Transformers: Where information is transformed into something usable (Transform(allData)).
-5. Commands: Where data is saved to the database (Submit(transformModel)).
+1. Queries: Where extra information is gathered from the universe (Query(userInput)).
+1. Validators: Where data validation is performed (Validate(allData)).
+1. Transformers: Where information is transformed into something usable (Transform(allData)).
+1. Commands: Where data is saved to the database (Submit(transformModel)).
 
 # FAQ
 
 ## Q: Why don't you put database queries inside validations in Extended IPO?
-    A: When you intermingle queries with processes, it's really hard to never duplicate a database query. It's easier to grab all of the information you'll need exactly once. Often the reduction in duplication more than offsets the number of queries executed if the function exits early.
+> A: When you intermingle queries with processes, it's really hard to never duplicate a database query. It's easier to grab all of the information you'll need exactly once. Often the reduction in duplication more than offsets the number of queries executed if the function exits early.
 
 ## Q: Why can't you return something from a Command?
-    A: The validation should catch any case where we expect not to be able to be able to complete a user flow. Therefore if a command fails, we don't want to return a result code because that situation is a failure we don't expect. It's an exceptional case, which requires an exception. There is a situation where you need to return an id to a user after something has been created. You could get around this by finding that id within a Query at the top of the user flow and submitting it as part of the payload... But that sometimes feels awkward. I'm open to ideas for how to allow ids to be returned but not allowing result codes.
+> A: The validation should catch any case where we expect not to be able to be able to complete a user flow. Therefore if a command fails, we don't want to return a result code because that situation is a failure we don't expect. It's an exceptional case, which requires an exception. There is a situation where you need to return an id to a user after something has been created. You could get around this by finding that id within a Query at the top of the user flow and submitting it as part of the payload... But that sometimes feels awkward. I'm open to ideas for how to allow ids to be returned but not allowing result codes.
 
-    Sidenote: if you *really* want to return a result code, look at [MediatR](https://github.com/jbogard/MediatR). MediatR is another way designate sepparate Queries / Commands, and promotes "Vertical Slice Architecture" which is also at play in Extended IPO. 
+> Sidenote: if you *really* want to return a result code, look at [MediatR](https://github.com/jbogard/MediatR). MediatR is another way designate sepparate Queries / Commands, and promotes "Vertical Slice Architecture" which is also at play in Extended IPO. 
 
 # Summary
 Our goals as developers should not be to promote any framework or pattern, but to write intention-revealing code. Extended IPO is one way to write intention revealing code, but not the only way. Also, if you don't prize the "mundane" aspects of programming, such as naming your variables, no amount of new patterns or new language features will help increase your readability.
