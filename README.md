@@ -78,7 +78,7 @@ What we've just learned is enough to successfully implement Extended IPO. If you
 
 # Library
 
-The library associated with Extended IPO lines up seamlessly with the descriptions above. There are four interfaces and a class. Each designed to allow you to incorporate Extended IPO into your entry points for user flow.
+The library associated with Extended IPO lines up seamlessly with the descriptions above. There are four interfaces, each designed to allow you to incorporate Extended IPO into your entry points for user flow.
 
 ## Interfaces:
 - IQueryer is designed for a situation where you receive user input and relay back all the data that function will need to run. As such, it is designed to take in type T and return type U.
