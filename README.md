@@ -64,7 +64,7 @@ Generalizing the code above, we end up with five different types of functions:
 # FAQ
 
 ## Q: Why don't you put database queries inside validations in Extended IPO?
-> A: When you intermingle queries with processes, it's really hard to never duplicate a database query. It's easier to grab all of the information you'll need exactly once. Often the reduction in duplication more than offsets the number of queries executed if the function exits early.
+> A: When you intermingle queries with processes, it's really hard to never duplicate a database query. It's easier to grab all of the information you'll need exactly once. Often the reduction in duplication more than offsets the number of queries executed if the function were to exit early.
 
 ## Q: Why can't you return something from a Command?
 > A: The validation should catch any case where we expect not to be able to be able to complete a user flow. Therefore if a command fails, we don't want to return a result code because that situation is a failure we don't expect. It's an exceptional case, which requires an exception. There is a situation where you need to return an id to a user after something has been created. You could get around this by finding that id within a Query at the top of the user flow and submitting it as part of the payload... But that sometimes feels awkward. I'm open to ideas for how to allow ids to be returned but not allowing result codes.
@@ -72,7 +72,7 @@ Generalizing the code above, we end up with five different types of functions:
 > Sidenote: if you *really* want to return a result code, look at [MediatR](https://github.com/jbogard/MediatR). MediatR is another way designate sepparate Queries / Commands, and promotes "Vertical Slice Architecture" which is also at play in Extended IPO. 
 
 # Summary
-Our goals as developers should not be to promote any framework or pattern, but to write intention-revealing code. Extended IPO is one way to write intention revealing code, but not the only way. Also, if you don't prize the "mundane" aspects of programming, such as naming your variables, no amount of new patterns or new language features will help increase your readability.
+Our goals as developers should not be to promote any framework or pattern, but to write intention-revealing code. Extended IPO is just one way to write intention revealing code. Also, if you don't prize the "mundane" aspects of programming, such as naming your variables, no amount of new patterns or new language features will help increase your code's readability.
 
 What we've just learned is enough to successfully implement Extended IPO. If you're really *hoping* for a package to put in your solution, read on. (But really you should just leave and go write good code without using a library for Extended IPO.)
 
@@ -82,12 +82,9 @@ The library associated with Extended IPO lines up seamlessly with the descriptio
 
 ## Interfaces:
 - IQueryer is designed for a situation where you receive user input and relay back all the data that function will need to run. As such, it is designed to take in type T and return type U.
-- IValidator is designed to take in either an IEnumerable\<T\> or one model of type T and return a List of ValidationErrorModels. If you don't want to pass back ValidationErrorModels, you are free to provide a type of U, which will pass back a List of type U. There is a default implementation when you take in a list which simply passes each model of type T to the function which validates a single model of type T. This should help reduce the amount of boilerplate you write without restricting you to a default implementation.
+- IValidator is designed to take in either an IEnumerable\<T\> or one model of type T and return a List of type U. There is a default implementation when you take in a list which simply passes each model of type T to the function which validates a single model of type T. This should help reduce the amount of boilerplate you write without restricting you to a default implementation.
 - ITransformer is designed to take in a model of type T and return a model of type U. Any business logic should reside within an ITransformer.
 - ICommander is designed to take in a model of type T and perform an operation. There is nothing returned from an ICommander because any operation done is expected to succeed.
-
-## Models:
-- ValidationErrorModel contains properties which will be useful in writing error messages to a user. There are multiple designs which could be used, but I opted for a flat design so that implementing the validation function is easier. The default implementation for an IValidator returns a List of ValidationErrorModels.
  
 ## Installation 
 
