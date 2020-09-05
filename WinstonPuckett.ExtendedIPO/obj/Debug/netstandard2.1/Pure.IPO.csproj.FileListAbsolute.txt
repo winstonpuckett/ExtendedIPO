@@ -1,0 +1,9 @@
+C:\Users\Bobby Puckett\source\repos\Pure.IPO\Pure.IPO\bin\Debug\netstandard2.1\Pure.IPO.deps.json
+C:\Users\Bobby Puckett\source\repos\Pure.IPO\Pure.IPO\bin\Debug\netstandard2.1\Pure.IPO.dll
+C:\Users\Bobby Puckett\source\repos\Pure.IPO\Pure.IPO\bin\Debug\netstandard2.1\Pure.IPO.pdb
+C:\Users\Bobby Puckett\source\repos\Pure.IPO\Pure.IPO\obj\Debug\netstandard2.1\Pure.IPO.csprojAssemblyReference.cache
+C:\Users\Bobby Puckett\source\repos\Pure.IPO\Pure.IPO\obj\Debug\netstandard2.1\Pure.IPO.AssemblyInfoInputs.cache
+C:\Users\Bobby Puckett\source\repos\Pure.IPO\Pure.IPO\obj\Debug\netstandard2.1\Pure.IPO.AssemblyInfo.cs
+C:\Users\Bobby Puckett\source\repos\Pure.IPO\Pure.IPO\obj\Debug\netstandard2.1\Pure.IPO.csproj.CoreCompileInputs.cache
+C:\Users\Bobby Puckett\source\repos\Pure.IPO\Pure.IPO\obj\Debug\netstandard2.1\Pure.IPO.dll
+C:\Users\Bobby Puckett\source\repos\Pure.IPO\Pure.IPO\obj\Debug\netstandard2.1\Pure.IPO.pdb

@@ -1,0 +1,4 @@
+C:\Users\Bobby Puckett\source\repos\Pure.IPO\Pure.IPO.Tests\obj\Debug\netcoreapp3.1\Pure.IPO.Tests.csprojAssemblyReference.cache
+C:\Users\Bobby Puckett\source\repos\Pure.IPO\Pure.IPO.Tests\obj\Debug\netcoreapp3.1\Pure.IPO.Tests.AssemblyInfoInputs.cache
+C:\Users\Bobby Puckett\source\repos\Pure.IPO\Pure.IPO.Tests\obj\Debug\netcoreapp3.1\Pure.IPO.Tests.AssemblyInfo.cs
+C:\Users\Bobby Puckett\source\repos\Pure.IPO\Pure.IPO.Tests\obj\Debug\netcoreapp3.1\Pure.IPO.Tests.csproj.CoreCompileInputs.cache
